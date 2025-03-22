@@ -10,7 +10,15 @@
         textarea { width: 100%; height: 50px; }
         button { margin-top: 10px; padding: 10px; cursor: pointer; }
         .result { margin-top: 20px; font-weight: bold; }
+        .buttons { display: flex; justify-content: space-between; margin-top: 10px; }
     </style>
+    <script>
+        function clearForm() {
+            document.getElementById("stmt1").value = "";
+            document.getElementById("stmt2").value = "";
+            document.getElementById("result").innerHTML = "";
+        }
+    </script>
 </head>
 <body>
     <h2>Statement Comparator</h2>
@@ -21,11 +29,14 @@
         <label for="stmt2">Statement 2:</label><br>
         <textarea id="stmt2" name="stmt2">{{ stmt2 }}</textarea><br>
 
-        <button type="submit">Compare</button>
+        <div class="buttons">
+            <button type="submit">Compare</button>
+            <button type="button" onclick="clearForm()">Clear</button>
+        </div>
     </form>
 
     {% if result %}
-    <div class="result">{{ result | safe }}</div>
+    <div class="result" id="result">{{ result | safe }}</div>
     {% endif %}
 </body>
 </html>
