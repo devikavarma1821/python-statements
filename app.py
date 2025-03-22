@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
@@ -21,7 +21,7 @@ def compare_statements():
 
         result = f"Statements are different.<br><b>Words in first but not in second:</b> {', '.join(diff1)}<br><b>Words in second but not in first:</b> {', '.join(diff2)}"
 
-    return render_template("index.html", result=result)
+    return render_template("index.html", result=result, stmt1=stmt1, stmt2=stmt2)  # Preserve input
 
 if __name__ == '__main__':
     app.run(debug=True)
